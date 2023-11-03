@@ -12,13 +12,11 @@ function createfirstArray() {
     arr.push(input.value);
     }
 }
-console.log(arr);
-
 
 function prepareList () {
     
     button.addEventListener('click', ()=>{
-        if(input.value !==""){
+        if(input.value.trim() !==""){
         if(flag) {
             let div = document.createElement('div');
             div.classList.add("listDiv")
@@ -31,6 +29,19 @@ function prepareList () {
               );
               deleteImg.setAttribute('height', 20);
               deleteImg.setAttribute('width', 20);
+            deleteImg.addEventListener("mouseenter", (e)=>{
+                e.target.setAttribute(
+                    'src',
+                    './img/delete-active.svg',
+                  );
+            })
+            deleteImg.addEventListener("mouseleave", (e)=>{
+                e.target.setAttribute(
+                    'src',
+                    './img/delete.svg',
+                  );
+            })
+            
 
             div.append(deleteImg); 
             deleteImg.classList.add("delete");
@@ -51,6 +62,7 @@ function prepareList () {
             input.value="";
             flag =!flag;
         }}
+        else{alert("Boşluq əlavə etməyin")};
 
         let img= document.querySelectorAll(".delete");
         img.forEach((elem)=>{
@@ -112,23 +124,21 @@ function prepareList () {
   order.addEventListener("click", ()=>{
         sortList();
   })
-  
-  function changeImageOnHover() {
-    deleteClass.style.display="none";
-    deleteActive.style.display="inline";
-  }
-  function restoreOriginalImage() {
-    deleteClass.style.display="inline";
-    deleteActive.style.display="none";
-  }
 
-  deleteClass.addEventListener('mouseenter', changeImageOnHover);
-  deleteClass.addEventListener('mouseleave', restoreOriginalImage);
 
-  var divElements = document.querySelectorAll('.listDiv');
-  divElements.forEach(function(divElement) {
-    divElement.setAttribute('draggable', 'true');
-  });
+  let deleteMainImg = document.querySelector(".delete-main img");
+  deleteMainImg.addEventListener("mouseenter", (e)=>{
+        e.target.setAttribute(
+            'src',
+            './img/delete-active.svg',
+        );
+    })
+    deleteMainImg.addEventListener("mouseleave", (e)=>{
+        e.target.setAttribute(
+            'src',
+            './img/delete.svg',
+        );
+    })
 
 }
 prepareList ();

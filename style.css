@@ -106,8 +106,9 @@ button:hover{
 p{
     font-weight: 600;
     padding: 12px 27px;
+    word-break: break-all;
 }
 
-.delete-active-main {
+/* .delete-active-main {
     display: none;
-}
+} */
